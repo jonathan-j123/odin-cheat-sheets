@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>CSS Selectors Cheat Sheet</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #eef2ff;
+    color: #1e293b;
+    padding: 30px;
+}
+
+.toolbar {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+button {
+    background: #2563eb;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+button:hover {
+    background: #1d4ed8;
+}
+
+#cheatsheet {
+    max-width: 1500px;
+    margin: auto;
+    background: white;
+    padding: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 3rem;
+    color: #2563eb;
+}
+
+header p {
+    color: #64748b;
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+.section-title {
+    margin-top: 40px;
+    margin-bottom: 20px;
+    font-size: 2rem;
+    color: #2563eb;
+    border-bottom: 3px solid #2563eb;
+    padding-bottom: 8px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 20px;
+}
+
+.card h2 {
+    color: #0f172a;
+    margin-bottom: 10px;
+}
+
+.code {
+    background: #0f172a;
+    color: #f8fafc;
+    padding: 12px;
+    border-radius: 8px;
+    font-family: Consolas, monospace;
+    margin: 10px 0;
+    overflow-x: auto;
+    white-space: pre;
+}
+
+.tip {
+    margin-top: 10px;
+    color: #475569;
+    line-height: 1.5;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 30px;
+}
+
+th {
+    background: #2563eb;
+    color: white;
+}
+
+th,
+td {
+    padding: 12px;
+    border: 1px solid #cbd5e1;
+    text-align: left;
+}
+
+tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+td:first-child {
+    font-family: Consolas, monospace;
+    font-weight: 600;
+}
+
+.note {
+    background: #eff6ff;
+    border-left: 5px solid #2563eb;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 8px;
+    line-height: 1.6;
+}
+
+footer {
+    margin-top: 30px;
+    text-align: center;
+    color: #64748b;
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 0;
+    }
+
+    .toolbar {
+        display: none;
+    }
+
+    #cheatsheet {
+        box-shadow: none;
+        border-radius: 0;
+        max-width: none;
+    }
+}
+</style>
+</head>
+
+<body>
+<h3 ><a href="../index.html">Home</a></h3>
+<div class="toolbar">
+    <button onclick="downloadImage()">
+        Download Cheat Sheet as PNG
+    </button>
+</div>
+
+<div id="cheatsheet">
+
+<header>
+    <h1>CSS Selectors Cheat Sheet</h1>
+    <p>Beginner → Advanced Reference Guide</p>
+</header>
+
+
+<!-- BASIC SELECTORS -->
+
+<h2 class="section-title">1. Basic Selectors</h2>
+
+<div class="grid">
+
+<div class="card">
+    <h2>Type Selector</h2>
+    <div class="code">p {
+    color: blue;
+}</div>
+    <div class="tip">
+        Selects all elements of a specific HTML type.
+    </div>
+</div>
+
+<div class="card">
+    <h2>Class Selector</h2>
+    <div class="code">.highlight {
+    background: yellow;
+}</div>
+    <div class="tip">
+        Selects elements with the specified class.
+    </div>
+</div>
+
+<div class="card">
+    <h2>ID Selector</h2>
+    <div class="code">#header {
+    color: red;
+}</div>
+    <div class="tip">
+        Selects the element with the specified ID.
+    </div>
+</div>
+
+<div class="card">
+    <h2>Universal Selector</h2>
+    <div class="code">* {
+    margin: 0;
+}</div>
+    <div class="tip">
+        Selects every element.
+    </div>
+</div>
+
+<div class="card">
+    <h2>Grouping</h2>
+    <div class="code">h1, h2, h3 {
+    color: green;
+}</div>
+    <div class="tip">
+        Applies the same styles to multiple selectors.
+    </div>
+</div>
+
+<div class="card">
+    <h2>Chaining</h2>
+    <div class="code">p.highlight {
+    color: red;
+}</div>
+    <div class="tip">
+        Selects elements that match multiple conditions.
+        This selects only &lt;p&gt; elements with the class "highlight".
+    </div>
+</div>
+
+</div>
+
+
+<!-- COMBINATORS -->
+
+<h2 class="section-title">2. Combinators</h2>
+
+<div class="grid">
+
+<div class="card">
+    <h2>Descendant</h2>
+    <div class="code">div p {
+    color: blue;
+}</div>
+    <div class="tip">
+        Selects every &lt;p&gt; that is anywhere inside a &lt;div&gt;.
+    </div>
+</div>
+
+<div class="card">
+    <h2>Child</h2>
+    <div class="code">div > p {
+    color: blue;
+}</div>
+    <div class="tip">
+        Selects &lt;p&gt; elements that are direct children of &lt;div&gt;.
+    </div>
+</div>
+
+<div class="card">
+    <h2>Adjacent Sibling</h2>
+    <div class="code">h1 + p {
+    color: blue;
+}</div>
+    <div class="tip">
+        Selects the first &lt;p&gt; immediately after an &lt;h1&gt;.
+    </div>
+</div>
+
+<div class="card">
+    <h2>General Sibling</h2>
+    <div class="code">h1 ~ p {
+    color: blue;
+}</div>
+    <div class="tip">
+        Selects all &lt;p&gt; siblings that come after an &lt;h1&gt;.
+    </div>
+</div>
+
+</div>
+
+
+<!-- ATTRIBUTE SELECTORS -->
+
+<h2 class="section-title">3. Attribute Selectors</h2>
+
+<div class="grid">
+
+<div class="card">
+    <h2>Has Attribute</h2>
+    <div class="code">[disabled]</div>
+    <div class="tip">
+        Selects elements that have the specified attribute.
+    </div>
+</div>
+
+<div class="card">
+    <h2>Exact Attribute</h2>
+    <div class="code">input[type="text"]</div>
+    <div class="tip">
+        Selects elements whose attribute exactly matches the value.
+    </div>
+</div>
+
+<div class="card">
+    <h2>Starts With</h2>
+    <div class="code">a[href^="https"]</div>
+    <div class="tip">
+        Selects elements whose attribute value starts with the specified text.
+    </div>
+</div>
+
+<div class="card">
+    <h2>Ends With</h2>
+    <div class="code">a[href$=".pdf"]</div>
+    <div class="tip">
+        Selects elements whose attribute value ends with the specified text.
+    </div>
+</div>
+
+<div class="card">
+    <h2>Contains</h2>
+    <div class="code">a[href*="example"]</div>
+    <div class="tip">
+        Selects elements whose attribute value contains the specified text.
+    </div>
+</div>
+
+<div class="card">
+    <h2>Word Match</h2>
+    <div class="code">[class~="active"]</div>
+    <div class="tip">
+        Matches an individual word in a space-separated attribute value.
+    </div>
+</div>
+
+<div class="card">
+    <h2>Prefix / Language Match</h2>
+    <div class="code">[lang|="en"]</div>
+    <div class="tip">
+        Matches an attribute value that is exactly "en" or begins with "en-".
+    </div>
+</div>
+
+</div>
+
+
+<!-- PSEUDO-CLASSES -->
+
+<h2 class="section-title">4. Pseudo-Classes</h2>
+
+<div class="grid">
+
+<div class="card">
+    <h2>:hover</h2>
+    <div class="code">button:hover {
+    background: blue;
+}</div>
+    <div class="tip">
+        Selects an element when the pointer is over it.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:focus</h2>
+    <div class="code">input:focus {
+    border-color: blue;
+}</div>
+    <div class="tip">
+        Selects an element when it has focus.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:active</h2>
+    <div class="code">button:active {
+    transform: scale(.98);
+}</div>
+    <div class="tip">
+        Selects an element while it is being activated.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:visited</h2>
+    <div class="code">a:visited {
+    color: purple;
+}</div>
+    <div class="tip">
+        Selects links that the user has already visited.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:first-child</h2>
+    <div class="code">li:first-child {
+    font-weight: bold;
+}</div>
+    <div class="tip">
+        Selects an element if it is the first child of its parent.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:last-child</h2>
+    <div class="code">li:last-child {
+    font-weight: bold;
+}</div>
+    <div class="tip">
+        Selects an element if it is the last child of its parent.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:nth-child()</h2>
+    <div class="code">li:nth-child(2) {
+    color: red;
+}</div>
+    <div class="tip">
+        Selects an element based on its position among its siblings.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:nth-child(odd)</h2>
+    <div class="code">li:nth-child(odd) {
+    background: #eee;
+}</div>
+    <div class="tip">
+        Selects odd-numbered children.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:nth-child(even)</h2>
+    <div class="code">li:nth-child(even) {
+    background: #eee;
+}</div>
+    <div class="tip">
+        Selects even-numbered children.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:nth-of-type()</h2>
+    <div class="code">p:nth-of-type(2) {
+    color: red;
+}</div>
+    <div class="tip">
+        Selects an element based on its position among siblings of the same type.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:first-of-type</h2>
+    <div class="code">p:first-of-type {
+    color: blue;
+}</div>
+    <div class="tip">
+        Selects the first sibling of that element type.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:last-of-type</h2>
+    <div class="code">p:last-of-type {
+    color: blue;
+}</div>
+    <div class="tip">
+        Selects the last sibling of that element type.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:only-child</h2>
+    <div class="code">p:only-child {
+    color: red;
+}</div>
+    <div class="tip">
+        Selects an element that is the only child of its parent.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:only-of-type</h2>
+    <div class="code">p:only-of-type {
+    color: red;
+}</div>
+    <div class="tip">
+        Selects an element that is the only one of its type among its siblings.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:not()</h2>
+    <div class="code">p:not(.special) {
+    color: gray;
+}</div>
+    <div class="tip">
+        Selects elements that do not match the selector inside the parentheses.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:is()</h2>
+    <div class="code">:is(h1, h2, h3) {
+    color: blue;
+}</div>
+    <div class="tip">
+        Matches any selector listed inside the parentheses.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:where()</h2>
+    <div class="code">:where(h1, h2, h3) {
+    margin: 0;
+}</div>
+    <div class="tip">
+        Similar to :is(), but has zero specificity.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:has()</h2>
+    <div class="code">div:has(img) {
+    border: 1px solid;
+}</div>
+    <div class="tip">
+        Selects an element if it contains an element matching the selector.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:checked</h2>
+    <div class="code">input:checked {
+    accent-color: blue;
+}</div>
+    <div class="tip">
+        Selects checked checkboxes or radio buttons.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:disabled</h2>
+    <div class="code">button:disabled {
+    opacity: .5;
+}</div>
+    <div class="tip">
+        Selects disabled form controls.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:enabled</h2>
+    <div class="code">button:enabled {
+    cursor: pointer;
+}</div>
+    <div class="tip">
+        Selects enabled form controls.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:required</h2>
+    <div class="code">input:required {
+    border: 2px solid;
+}</div>
+    <div class="tip">
+        Selects form controls with the required attribute.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:valid</h2>
+    <div class="code">input:valid {
+    border-color: green;
+}</div>
+    <div class="tip">
+        Selects form controls whose current value passes validation.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:invalid</h2>
+    <div class="code">input:invalid {
+    border-color: red;
+}</div>
+    <div class="tip">
+        Selects form controls whose current value fails validation.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:empty</h2>
+    <div class="code">div:empty {
+    display: none;
+}</div>
+    <div class="tip">
+        Selects elements that have no children.
+    </div>
+</div>
+
+<div class="card">
+    <h2>:root</h2>
+    <div class="code">:root {
+    --main-color: blue;
+}</div>
+    <div class="tip">
+        Selects the document's root element, normally &lt;html&gt;.
+    </div>
+</div>
+
+</div>
+
+
+<!-- PSEUDO-ELEMENTS -->
+
+<h2 class="section-title">5. Pseudo-Elements</h2>
+
+<div class="grid">
+
+<div class="card">
+    <h2>::before</h2>
+    <div class="code">p::before {
+    content: "→ ";
+}</div>
+    <div class="tip">
+        Creates a pseudo-element before the element's content.
+    </div>
+</div>
+
+<div class="card">
+    <h2>::after</h2>
+    <div class="code">p::after {
+    content: " ✓";
+}</div>
+    <div class="tip">
+        Creates a pseudo-element after the element's content.
+    </div>
+</div>
+
+<div class="card">
+    <h2>::first-letter</h2>
+    <div class="code">p::first-letter {
+    font-size: 2rem;
+}</div>
+    <div class="tip">
+        Selects the first letter of the element's text.
+    </div>
+</div>
+
+<div class="card">
+    <h2>::first-line</h2>
+    <div class="code">p::first-line {
+    font-weight: bold;
+}</div>
+    <div class="tip">
+        Selects the first line of text.
+    </div>
+</div>
+
+<div class="card">
+    <h2>::selection</h2>
+    <div class="code">::selection {
+    background: yellow;
+}</div>
+    <div class="tip">
+        Styles text selected by the user.
+    </div>
+</div>
+
+<div class="card">
+    <h2>::placeholder</h2>
+    <div class="code">input::placeholder {
+    color: gray;
+}</div>
+    <div class="tip">
+        Styles placeholder text in form controls.
+    </div>
+</div>
+
+<div class="card">
+    <h2>::marker</h2>
+    <div class="code">li::marker {
+    font-weight: bold;
+}</div>
+    <div class="tip">
+        Styles the marker of list items.
+    </div>
+</div>
+
+</div>
+
+
+<!-- QUICK REFERENCE -->
+
+<h2 class="section-title">6. Quick Reference</h2>
+
+<table>
+<tr>
+    <th>Selector</th>
+    <th>Name</th>
+    <th>Description</th>
+</tr>
+
+<tr>
+    <td>element</td>
+    <td>Type</td>
+    <td>Selects HTML elements of a specific type.</td>
+</tr>
+
+<tr>
+    <td>.class</td>
+    <td>Class</td>
+    <td>Selects elements with a class.</td>
+</tr>
+
+<tr>
+    <td>#id</td>
+    <td>ID</td>
+    <td>Selects an element by ID.</td>
+</tr>
+
+<tr>
+    <td>*</td>
+    <td>Universal</td>
+    <td>Selects all elements.</td>
+</tr>
+
+<tr>
+    <td>A, B</td>
+    <td>Grouping</td>
+    <td>Selects A and B.</td>
+</tr>
+
+<tr>
+    <td>A B</td>
+    <td>Descendant</td>
+    <td>Selects B anywhere inside A.</td>
+</tr>
+
+<tr>
+    <td>A &gt; B</td>
+    <td>Child</td>
+    <td>Selects B that is a direct child of A.</td>
+</tr>
+
+<tr>
+    <td>A + B</td>
+    <td>Adjacent sibling</td>
+    <td>Selects B immediately after A.</td>
+</tr>
+
+<tr>
+    <td>A ~ B</td>
+    <td>General sibling</td>
+    <td>Selects B siblings that come after A.</td>
+</tr>
+
+<tr>
+    <td>[attr]</td>
+    <td>Attribute</td>
+    <td>Selects elements with an attribute.</td>
+</tr>
+
+<tr>
+    <td>[attr="value"]</td>
+    <td>Exact attribute</td>
+    <td>Matches an exact attribute value.</td>
+</tr>
+
+<tr>
+    <td>[attr^="value"]</td>
+    <td>Starts with</td>
+    <td>Attribute value starts with the specified text.</td>
+</tr>
+
+<tr>
+    <td>[attr$="value"]</td>
+    <td>Ends with</td>
+    <td>Attribute value ends with the specified text.</td>
+</tr>
+
+<tr>
+    <td>[attr*="value"]</td>
+    <td>Contains</td>
+    <td>Attribute value contains the specified text.</td>
+</tr>
+
+<tr>
+    <td>:hover</td>
+    <td>Pseudo-class</td>
+    <td>Pointer is over the element.</td>
+</tr>
+
+<tr>
+    <td>:focus</td>
+    <td>Pseudo-class</td>
+    <td>Element currently has focus.</td>
+</tr>
+
+<tr>
+    <td>:active</td>
+    <td>Pseudo-class</td>
+    <td>Element is being activated.</td>
+</tr>
+
+<tr>
+    <td>:visited</td>
+    <td>Pseudo-class</td>
+    <td>Visited link.</td>
+</tr>
+
+<tr>
+    <td>:first-child</td>
+    <td>Pseudo-class</td>
+    <td>First child of its parent.</td>
+</tr>
+
+<tr>
+    <td>:last-child</td>
+    <td>Pseudo-class</td>
+    <td>Last child of its parent.</td>
+</tr>
+
+<tr>
+    <td>:nth-child()</td>
+    <td>Pseudo-class</td>
+    <td>Matches an element based on its sibling position.</td>
+</tr>
+
+<tr>
+    <td>:nth-of-type()</td>
+    <td>Pseudo-class</td>
+    <td>Matches an element based on its position among the same element type.</td>
+</tr>
+
+<tr>
+    <td>:not()</td>
+    <td>Pseudo-class</td>
+    <td>Excludes elements matching a selector.</td>
+</tr>
+
+<tr>
+    <td>:is()</td>
+    <td>Pseudo-class</td>
+    <td>Matches any selector in the list.</td>
+</tr>
+
+<tr>
+    <td>:where()</td>
+    <td>Pseudo-class</td>
+    <td>Like :is(), but has zero specificity.</td>
+</tr>
+
+<tr>
+    <td>:has()</td>
+    <td>Pseudo-class</td>
+    <td>Selects an element based on a descendant/relative selector.</td>
+</tr>
+
+<tr>
+    <td>:checked</td>
+    <td>Pseudo-class</td>
+    <td>Checked checkbox or radio button.</td>
+</tr>
+
+<tr>
+    <td>:disabled</td>
+    <td>Pseudo-class</td>
+    <td>Disabled form control.</td>
+</tr>
+
+<tr>
+    <td>:enabled</td>
+    <td>Pseudo-class</td>
+    <td>Enabled form control.</td>
+</tr>
+
+<tr>
+    <td>:required</td>
+    <td>Pseudo-class</td>
+    <td>Required form control.</td>
+</tr>
+
+<tr>
+    <td>:valid</td>
+    <td>Pseudo-class</td>
+    <td>Form control with a valid value.</td>
+</tr>
+
+<tr>
+    <td>:invalid</td>
+    <td>Pseudo-class</td>
+    <td>Form control with an invalid value.</td>
+</tr>
+
+<tr>
+    <td>::before</td>
+    <td>Pseudo-element</td>
+    <td>Creates content before an element's content.</td>
+</tr>
+
+<tr>
+    <td>::after</td>
+    <td>Pseudo-element</td>
+    <td>Creates content after an element's content.</td>
+</tr>
+
+<tr>
+    <td>::first-letter</td>
+    <td>Pseudo-element</td>
+    <td>Selects the first letter.</td>
+</tr>
+
+<tr>
+    <td>::first-line</td>
+    <td>Pseudo-element</td>
+    <td>Selects the first line.</td>
+</tr>
+
+<tr>
+    <td>::selection</td>
+    <td>Pseudo-element</td>
+    <td>Styles selected text.</td>
+</tr>
+
+<tr>
+    <td>::placeholder</td>
+    <td>Pseudo-element</td>
+    <td>Styles placeholder text.</td>
+</tr>
+
+<tr>
+    <td>::marker</td>
+    <td>Pseudo-element</td>
+    <td>Styles list markers.</td>
+</tr>
+
+</table>
+
+
+<!-- IMPORTANT NOTES -->
+
+<h2 class="section-title">7. Important Notes</h2>
+
+<div class="note">
+    <strong>Selector vs. Combinator:</strong>
+    A selector identifies elements. A combinator describes the relationship
+    between selectors, such as parent, child, or sibling relationships.
+</div>
+
+<div class="note">
+    <strong>Pseudo-class vs. Pseudo-element:</strong>
+    A pseudo-class uses one colon, such as <code>:hover</code> or
+    <code>:first-child</code>. A pseudo-element normally uses two colons,
+    such as <code>::before</code> or <code>::first-letter</code>.
+</div>
+
+<div class="note">
+    <strong>:nth-child() vs. :nth-of-type():</strong>
+    <code>:nth-child()</code> considers the element's position among all
+    siblings. <code>:nth-of-type()</code> considers its position among
+    siblings of the same element type.
+</div>
+
+<div class="note">
+    <strong>Specificity:</strong>
+    In general, ID selectors have greater specificity than class,
+    attribute, and pseudo-class selectors, while type selectors have
+    lower specificity.
+</div>
+
+
+<footer>
+    CSS Selectors Cheat Sheet • Beginner → Advanced
+</footer>
+
+</div>
+
+
+<script>
+function downloadImage() {
+
+    const element = document.getElementById("cheatsheet");
+
+    html2canvas(element, {
+        scale: 2,
+        useCORS: true,
+        backgroundColor: "#ffffff"
+    }).then(canvas => {
+
+        const link = document.createElement("a");
+
+        link.download = "css-selectors-cheat-sheet.png";
+        link.href = canvas.toDataURL("image/png");
+
+        link.click();
+    });
+}
+</script>
+
+</body>
+</html>

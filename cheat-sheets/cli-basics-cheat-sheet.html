@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Command Line Practice Flow</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", sans-serif;
+    background: #f4f7fb;
+    color: #333;
+    padding: 40px 20px;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+
+h1 {
+    text-align: center;
+    color: #1e3a8a;
+    margin-bottom: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 18px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.08);
+    border-left: 6px solid #2563eb;
+}
+
+.card h2 {
+    font-size: 1.2rem;
+    color: #1e40af;
+    margin-bottom: 10px;
+}
+
+.command {
+    background: #111827;
+    color: #10b981;
+    padding: 12px;
+    border-radius: 8px;
+    margin: 10px 0;
+    overflow-x: auto;
+    font-family: Consolas, monospace;
+    font-size: 0.95rem;
+}
+
+.note {
+    color: #555;
+}
+
+.shortcuts {
+    list-style: none;
+    margin-top: 10px;
+}
+
+.shortcuts li {
+    padding: 8px 0;
+    border-bottom: 1px solid #eee;
+}
+
+kbd {
+    background: #eef2ff;
+    border: 1px solid #c7d2fe;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.footer {
+    background: #dbeafe;
+    border-left: 6px solid #2563eb;
+    padding: 20px;
+    border-radius: 12px;
+    margin-top: 25px;
+}
+
+@media print {
+    body {
+        background: white;
+        padding: 10px;
+    }
+
+    .card {
+        box-shadow: none;
+        border: 1px solid #ddd;
+    }
+}
+</style>
+</head>
+
+<body>
+<h3 ><a href="../index.html">Home</a></h3>
+<div class="container">
+
+<h1>🖥️ Command Line Practice Flow</h1>
+
+<div class="card">
+    <h2>1️⃣ List Files with Classification</h2>
+    <div class="command">ls -F</div>
+    <p class="note">
+        Shows folders with <strong>/</strong>, executables with
+        <strong>*</strong>, and symbolic links with <strong>@</strong>.
+    </p>
+</div>
+
+<div class="card">
+    <h2>2️⃣ Make Project Folders</h2>
+    <div class="command">
+mkdir -p my_project/css my_project/js my_project/html
+    </div>
+    <p class="note">
+        Creates the project folder and all subfolders in one command.
+    </p>
+</div>
+
+<div class="card">
+    <h2>3️⃣ Navigate into the Folder</h2>
+    <div class="command">cd my_project</div>
+    <p class="note">Moves into the project directory.</p>
+</div>
+
+<div class="card">
+    <h2>4️⃣ Create or Edit Files with Nano</h2>
+    <div class="command">
+nano css/style.css
+nano js/script.js
+nano html/index.html
+    </div>
+    <p class="note">
+        Opens existing files or creates new files after saving.
+    </p>
+</div>
+
+<div class="card">
+    <h2>5️⃣ Save & Exit Nano</h2>
+
+    <ul class="shortcuts">
+        <li><kbd>Ctrl + O</kbd> Save file</li>
+        <li><kbd>Enter</kbd> Confirm filename</li>
+        <li><kbd>Ctrl + X</kbd> Exit Nano</li>
+    </ul>
+</div>
+
+<div class="card">
+    <h2>6️⃣ Confirm Files Were Created</h2>
+    <div class="command">ls -F</div>
+    <p class="note">
+        Verify that your folders and files now exist.
+    </p>
+</div>
+
+<div class="card">
+    <h2>7️⃣ Clear the Screen</h2>
+
+    <div class="command">clear</div>
+    <p class="note">Clears the visible terminal screen.</p>
+
+    <div class="command">clear -x</div>
+    <p class="note">
+        Clears the screen while preserving scrollback history.
+    </p>
+</div>
+
+<div class="footer">
+    <strong>🎯 Practice Goal</strong><br>
+    Learn how to view files, create folders, navigate directories,
+    edit files with Nano, save your work, and keep your terminal clean.
+</div>
+
+</div>
+
+</body>
+</html>
