@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CSS Positioning & Box Model Cheat Sheet</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 30px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #2c3e50;
+    }
+
+    h1 {
+      margin-top: 0;
+      border-bottom: 3px solid #2c3e50;
+      padding-bottom: 10px;
+    }
+
+    h2 {
+      margin-top: 0;
+    }
+
+    code {
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+      color: #c0392b;
+    }
+
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    pre code {
+      background: none;
+      color: inherit;
+      padding: 0;
+    }
+
+    section {
+      background: white;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .example {
+      background: #f8f9fa;
+      border-left: 4px solid #3498db;
+      padding: 12px 15px;
+      margin-top: 12px;
+    }
+
+    .warning {
+      background: #fff8e1;
+      border-left: 4px solid #f39c12;
+      padding: 12px 15px;
+      margin-top: 12px;
+    }
+
+    .tip {
+      background: #eafaf1;
+      border-left: 4px solid #27ae60;
+      padding: 12px 15px;
+      margin-top: 12px;
+    }
+
+    ul {
+      padding-left: 25px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 15px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #2c3e50;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    .diagram {
+      background: #eef3f7;
+      border: 2px dashed #95a5a6;
+      padding: 20px;
+      margin-top: 15px;
+      text-align: center;
+    }
+
+    .box {
+      background: #3498db;
+      color: white;
+      width: 150px;
+      height: 80px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 5px solid #2c3e50;
+      text-align: center;
+    }
+
+    .small {
+      color: #666;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+
+<body>
+  <h3 ><a href="../index.html">Home</a></h3>
+  <h1>CSS Positioning & Box Model Cheat Sheet</h1>
+
+  <!-- POSITION -->
+  <section>
+    <h2>1. Position</h2>
+
+    <p>
+      The <code>position</code> property determines how an element is positioned
+      in the document.
+    </p>
+
+    <table>
+      <tr>
+        <th>Value</th>
+        <th>Behavior</th>
+      </tr>
+
+      <tr>
+        <td><code>static</code></td>
+        <td>
+          Default. The element follows the normal document flow.
+          <code>top</code>, <code>right</code>, <code>bottom</code>,
+          <code>left</code>, and <code>inset</code> do not move it.
+        </td>
+      </tr>
+
+      <tr>
+        <td><code>relative</code></td>
+        <td>
+          Stays in the normal flow but can be visually moved using
+          <code>top</code>, <code>right</code>, <code>bottom</code>,
+          <code>left</code>, or <code>inset</code>.
+        </td>
+      </tr>
+
+      <tr>
+        <td><code>absolute</code></td>
+        <td>
+          Removed from normal flow and positioned relative to its containing
+          block.
+        </td>
+      </tr>
+
+      <tr>
+        <td><code>fixed</code></td>
+        <td>
+          Removed from normal flow and positioned relative to the viewport
+          in the common case. It remains in place while scrolling.
+        </td>
+      </tr>
+
+      <tr>
+        <td><code>sticky</code></td>
+        <td>
+          Behaves like a relatively positioned element until a scroll
+          threshold is reached, then sticks within its containing block.
+        </td>
+      </tr>
+    </table>
+
+    <div class="example">
+      <code>.box { position: relative; }</code>
+    </div>
+  </section>
+
+
+  <!-- TOP RIGHT BOTTOM LEFT -->
+  <section>
+    <h2>2. top, right, bottom, left</h2>
+
+    <p>
+      These properties move a positioned element from a particular edge.
+      They work with elements whose <code>position</code> is not
+      <code>static</code>.
+    </p>
+
+    <pre><code>.box {
+  position: relative;
+  top: 20px;
+  left: 30px;
+}</code></pre>
+
+    <ul>
+      <li><code>top: 20px;</code> → moves the element downward.</li>
+      <li><code>right: 20px;</code> → moves it toward the left.</li>
+      <li><code>bottom: 20px;</code> → moves it upward.</li>
+      <li><code>left: 20px;</code> → moves it toward the right.</li>
+    </ul>
+
+    <div class="warning">
+      <strong>Important:</strong>
+      These properties do not work as positioning offsets when
+      <code>position: static</code> is used.
+    </div>
+  </section>
+
+
+  <!-- INSET -->
+  <section>
+    <h2>3. inset</h2>
+
+    <p>
+      <code>inset</code> is shorthand for
+      <code>top</code>, <code>right</code>, <code>bottom</code>, and
+      <code>left</code>.
+    </p>
+
+    <ul>
+      <li><code>inset: 0;</code> → all four sides are 0.</li>
+      <li><code>inset: 10px;</code> → 10px on all four sides.</li>
+      <li><code>inset: 10px 20px;</code> → top/bottom = 10px, left/right = 20px.</li>
+      <li><code>inset: 10px 20px 30px;</code> → top = 10px, left/right = 20px, bottom = 30px.</li>
+      <li><code>inset: 10px 20px 30px 40px;</code> → top, right, bottom, left.</li>
+    </ul>
+
+    <div class="example">
+      <pre><code>.box {
+  position: absolute;
+  inset: 0;
+}</code></pre>
+
+      The element stretches to the edges of its containing block.
+    </div>
+  </section>
+
+
+  <!-- Z INDEX -->
+  <section>
+    <h2>4. z-index</h2>
+
+    <p>
+      Controls the stacking order of positioned elements and other elements
+      that participate in stacking contexts.
+    </p>
+
+    <pre><code>.box {
+  position: relative;
+  z-index: 10;
+}</code></pre>
+
+    <ul>
+      <li>Higher stacking levels generally appear in front of lower ones.</li>
+      <li>Negative values can place an element behind other content.</li>
+      <li><code>z-index</code> is affected by stacking contexts.</li>
+    </ul>
+
+    <div class="tip">
+      Think of <code>z-index</code> as controlling the element's
+      <strong>front-to-back stacking order</strong>.
+    </div>
+  </section>
+
+
+  <!-- CONTAINING BLOCK -->
+  <section>
+    <h2>5. Containing Block</h2>
+
+    <p>
+      A positioned element needs a reference area for its offsets.
+      This reference area is called its <strong>containing block</strong>.
+    </p>
+
+    <pre><code>.parent {
+  position: relative;
+}
+
+.child {
+  position: absolute;
+  top: 0;
+  right: 0;
+}</code></pre>
+
+    <p>
+      In this common pattern, the absolutely positioned child is positioned
+      relative to the parent.
+    </p>
+
+    <div class="tip">
+      <strong>Common pattern:</strong>
+      <code>position: relative</code> on the parent +
+      <code>position: absolute</code> on the child.
+    </div>
+  </section>
+
+
+  <!-- MARGIN -->
+  <section>
+    <h2>6. Margin</h2>
+
+    <p>
+      <code>margin</code> controls space <strong>outside</strong> the element.
+    </p>
+
+    <pre><code>.box {
+  margin: 20px;
+}</code></pre>
+
+    <ul>
+      <li><code>margin: 20px;</code> → 20px on all sides.</li>
+      <li><code>margin: 10px 20px;</code> → top/bottom = 10px, left/right = 20px.</li>
+      <li><code>margin: 10px auto;</code> → 10px top/bottom and automatic left/right margins.</li>
+    </ul>
+
+    <div class="example">
+      <strong>Important:</strong>
+      Margins create space outside the border and can affect the position
+      of the element relative to surrounding elements.
+    </div>
+  </section>
+
+
+  <!-- PADDING -->
+  <section>
+    <h2>7. Padding</h2>
+
+    <p>
+      <code>padding</code> controls space <strong>inside</strong> the element,
+      between the content and the border.
+    </p>
+
+    <pre><code>.box {
+  padding: 20px;
+}</code></pre>
+
+    <p>
+      Increasing padding makes the content area farther away from the border.
+    </p>
+  </section>
+
+
+  <!-- BORDER -->
+  <section>
+    <h2>8. Border</h2>
+
+    <p>
+      <code>border</code> creates a visible boundary around the padding
+      and content.
+    </p>
+
+    <pre><code>.box {
+  border: 5px solid black;
+}</code></pre>
+
+    <p>
+      The shorthand follows:
+    </p>
+
+    <pre><code>border: width style color;</code></pre>
+
+    <p>Example:</p>
+
+    <pre><code>border: 2px solid #333;</code></pre>
+
+    <div class="diagram">
+      <strong>Margin</strong>
+      <div class="box">
+        Content
+      </div>
+      <strong>Outside → Margin | Border | Padding | Content</strong>
+    </div>
+  </section>
+
+
+  <!-- BOX SIZING -->
+  <section>
+    <h2>9. box-sizing</h2>
+
+    <p>
+      <code>box-sizing</code> determines how an element's declared
+      <code>width</code> and <code>height</code> are calculated.
+    </p>
+
+    <h3>content-box</h3>
+
+    <pre><code>.box {
+  box-sizing: content-box;
+  width: 200px;
+  padding: 20px;
+  border: 10px solid black;
+}</code></pre>
+
+    <p>
+      With <code>content-box</code>, the declared width applies only to the
+      content.
+    </p>
+
+    <p>
+      Total width =
+      <code>200 + 20 + 20 + 10 + 10 = 260px</code>
+    </p>
+
+    <h3>border-box</h3>
+
+    <pre><code>.box {
+  box-sizing: border-box;
+  width: 200px;
+  padding: 20px;
+  border: 10px solid black;
+}</code></pre>
+
+    <p>
+      With <code>border-box</code>, the declared width includes the content,
+      padding, and border.
+    </p>
+
+    <p>
+      Total width = <code>200px</code>
+    </p>
+
+    <div class="tip">
+      <strong>Common reset:</strong>
+
+      <pre><code>* {
+  box-sizing: border-box;
+}</code></pre>
+
+      This makes width and height easier to reason about.
+    </div>
+  </section>
+
+
+  <!-- WIDTH AND HEIGHT -->
+  <section>
+    <h2>10. Width & Height</h2>
+
+    <p>
+      These properties determine the dimensions of an element's box.
+    </p>
+
+    <pre><code>.box {
+  width: 300px;
+  height: 150px;
+}</code></pre>
+
+    <p>Useful related properties:</p>
+
+    <ul>
+      <li><code>width</code></li>
+      <li><code>height</code></li>
+      <li><code>min-width</code></li>
+      <li><code>max-width</code></li>
+      <li><code>min-height</code></li>
+      <li><code>max-height</code></li>
+    </ul>
+
+    <div class="example">
+      <code>max-width: 100%;</code> is commonly used to prevent an element
+      from becoming wider than its containing block.
+    </div>
+  </section>
+
+
+  <!-- BOX MODEL -->
+  <section>
+    <h2>11. The CSS Box Model</h2>
+
+    <p>
+      Every element is represented as a rectangular box consisting of
+      four areas.
+    </p>
+
+    <div class="diagram">
+      <strong>Margin</strong>
+
+      <div style="
+        background: #d5f5e3;
+        padding: 25px;
+        margin: 15px;
+        border: 5px solid #27ae60;
+      ">
+        <strong>Border</strong>
+
+        <div style="
+          background: #fcf3cf;
+          padding: 25px;
+          border: 5px solid #f1c40f;
+        ">
+          <strong>Padding</strong>
+
+          <div style="
+            background: #aed6f1;
+            padding: 25px;
+            border: 2px solid #3498db;
+          ">
+            <strong>Content</strong>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <ul>
+      <li><strong>Content</strong> → actual text, image, etc.</li>
+      <li><strong>Padding</strong> → space inside the element.</li>
+      <li><strong>Border</strong> → edge surrounding the padding.</li>
+      <li><strong>Margin</strong> → space outside the element.</li>
+    </ul>
+  </section>
+
+
+  <!-- CENTERING -->
+  <section>
+    <h2>12. Centering</h2>
+
+    <h3>Absolute positioning + auto margins</h3>
+
+    <pre><code>.parent {
+  position: relative;
+}
+
+.child {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 100px;
+  height: 100px;
+}</code></pre>
+
+    <p>
+      This centers a fixed-size absolutely positioned element inside its
+      containing block.
+    </p>
+
+    <h3>Flexbox</h3>
+
+    <pre><code>.parent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}</code></pre>
+
+    <p>
+      Flexbox is generally the simpler choice when you just need to center
+      content.
+    </p>
+  </section>
+
+
+  <!-- POSITIONING COMPARISON -->
+  <section>
+    <h2>13. Quick Positioning Comparison</h2>
+
+    <table>
+      <tr>
+        <th>Property / Value</th>
+        <th>Main Purpose</th>
+      </tr>
+
+      <tr>
+        <td><code>position</code></td>
+        <td>Determines how an element participates in positioning.</td>
+      </tr>
+
+      <tr>
+        <td><code>top/right/bottom/left</code></td>
+        <td>Offsets a positioned element from an edge.</td>
+      </tr>
+
+      <tr>
+        <td><code>inset</code></td>
+        <td>Shorthand for top, right, bottom, and left.</td>
+      </tr>
+
+      <tr>
+        <td><code>z-index</code></td>
+        <td>Controls stacking order within the relevant stacking contexts.</td>
+      </tr>
+
+      <tr>
+        <td><code>margin</code></td>
+        <td>Creates space outside the element.</td>
+      </tr>
+
+      <tr>
+        <td><code>padding</code></td>
+        <td>Creates space inside the element.</td>
+      </tr>
+
+      <tr>
+        <td><code>border</code></td>
+        <td>Creates a boundary around the element.</td>
+      </tr>
+
+      <tr>
+        <td><code>box-sizing</code></td>
+        <td>Determines how width and height include padding and border.</td>
+      </tr>
+
+      <tr>
+        <td><code>width / height</code></td>
+        <td>Controls the element's dimensions.</td>
+      </tr>
+    </table>
+  </section>
+
+
+  <!-- MENTAL MODEL -->
+  <section>
+    <h2>14. Mental Model</h2>
+
+    <div class="tip">
+      <p><strong>Think about CSS layout in layers:</strong></p>
+
+      <ol>
+        <li>
+          <strong>Position</strong> → Where does the element participate
+          in the layout?
+        </li>
+
+        <li>
+          <strong>Offsets</strong> → How far is it moved from its reference
+          edges?
+        </li>
+
+        <li>
+          <strong>Dimensions</strong> → How wide and tall is it?
+        </li>
+
+        <li>
+          <strong>Padding</strong> → How much space is inside?
+        </li>
+
+        <li>
+          <strong>Border</strong> → Where is the visible edge?
+        </li>
+
+        <li>
+          <strong>Margin</strong> → How much space surrounds it?
+        </li>
+
+        <li>
+          <strong>z-index</strong> → Which element appears in front?
+        </li>
+      </ol>
+    </div>
+  </section>
+
+
+  <!-- CHEAT SHEET -->
+  <section>
+    <h2>15. One-Page Cheat Sheet</h2>
+
+    <table>
+      <tr>
+        <th>Property</th>
+        <th>Remember It As</th>
+        <th>Example</th>
+      </tr>
+
+      <tr>
+        <td><code>position</code></td>
+        <td>Positioning method</td>
+        <td><code>position: absolute;</code></td>
+      </tr>
+
+      <tr>
+        <td><code>top</code></td>
+        <td>Offset from top</td>
+        <td><code>top: 10px;</code></td>
+      </tr>
+
+      <tr>
+        <td><code>right</code></td>
+        <td>Offset from right</td>
+        <td><code>right: 10px;</code></td>
+      </tr>
+
+      <tr>
+        <td><code>bottom</code></td>
+        <td>Offset from bottom</td>
+        <td><code>bottom: 10px;</code></td>
+      </tr>
+
+      <tr>
+        <td><code>left</code></td>
+        <td>Offset from left</td>
+        <td><code>left: 10px;</code></td>
+      </tr>
+
+      <tr>
+        <td><code>inset</code></td>
+        <td>All four offsets</td>
+        <td><code>inset: 0;</code></td>
+      </tr>
+
+      <tr>
+        <td><code>z-index</code></td>
+        <td>Front/back order</td>
+        <td><code>z-index: 10;</code></td>
+      </tr>
+
+      <tr>
+        <td><code>margin</code></td>
+        <td>Outside space</td>
+        <td><code>margin: 20px;</code></td>
+      </tr>
+
+      <tr>
+        <td><code>padding</code></td>
+        <td>Inside space</td>
+        <td><code>padding: 20px;</code></td>
+      </tr>
+
+      <tr>
+        <td><code>border</code></td>
+        <td>Visible edge</td>
+        <td><code>border: 1px solid;</code></td>
+      </tr>
+
+      <tr>
+        <td><code>box-sizing</code></td>
+        <td>How size is calculated</td>
+        <td><code>box-sizing: border-box;</code></td>
+      </tr>
+
+      <tr>
+        <td><code>width</code></td>
+        <td>Horizontal size</td>
+        <td><code>width: 200px;</code></td>
+      </tr>
+
+      <tr>
+        <td><code>height</code></td>
+        <td>Vertical size</td>
+        <td><code>height: 100px;</code></td>
+      </tr>
+    </table>
+  </section>
+
+
+  <p class="small">
+    CSS Positioning & Box Model Cheat Sheet
+  </p>
+
+</body>
+</html>
