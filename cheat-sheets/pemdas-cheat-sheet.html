@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>PEMDAS Cheat Sheet</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background: #f9f9f9;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+    }
+    th {
+      background: #2c3e50;
+      color: #fff;
+    }
+    .rules, .example {
+      margin: 20px 0;
+      padding: 15px;
+      background: #ecf0f1;
+      border-left: 5px solid #2c3e50;
+    }
+    .highlight {
+      font-weight: bold;
+      color: #e74c3c;
+    }
+  </style>
+</head>
+<body>
+<h3 ><a href="../index.html">Home</a></h3>
+  <h1>✨ PEMDAS Cheat Sheet ✨</h1>
+
+  <table>
+    <tr>
+      <th>Letter</th>
+      <th>Meaning</th>
+      <th>Example</th>
+    </tr>
+    <tr>
+      <td>P</td>
+      <td>Parentheses</td>
+      <td>(2 + 3) × 4 = 20</td>
+    </tr>
+    <tr>
+      <td>E</td>
+      <td>Exponents</td>
+      <td>2³ = 8</td>
+    </tr>
+    <tr>
+      <td>M</td>
+      <td>Multiplication</td>
+      <td>3 × 4 = 12</td>
+    </tr>
+    <tr>
+      <td>D</td>
+      <td>Division</td>
+      <td>12 ÷ 3 = 4</td>
+    </tr>
+    <tr>
+      <td>A</td>
+      <td>Addition</td>
+      <td>5 + 2 = 7</td>
+    </tr>
+    <tr>
+      <td>S</td>
+      <td>Subtraction</td>
+      <td>9 − 4 = 5</td>
+    </tr>
+  </table>
+
+  <div class="rules">
+    <h2>🔑 Rules to Remember</h2>
+    <ul>
+      <li>Always solve <span class="highlight">inside parentheses first</span>.</li>
+      <li>Apply <span class="highlight">exponents</span> after parentheses.</li>
+      <li>Do <span class="highlight">multiplication and division</span> from left to right.</li>
+      <li>Do <span class="highlight">addition and subtraction</span> from left to right.</li>
+    </ul>
+  </div>
+
+  <div class="example">
+    <h2>🧮 Example Problem</h2>
+    <p>Solve: 8 + (3 × 2)² ÷ 6</p>
+    <ol>
+      <li>Parentheses: 3 × 2 = 6 → 8 + 6² ÷ 6</li>
+      <li>Exponents: 6² = 36 → 8 + 36 ÷ 6</li>
+      <li>Division: 36 ÷ 6 = 6 → 8 + 6</li>
+      <li>Addition: 8 + 6 = <span class="highlight">14</span></li>
+    </ol>
+  </div>
+</body>
+</html>

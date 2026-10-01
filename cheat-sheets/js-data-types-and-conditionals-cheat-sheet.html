@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Data Types & Conditionals Cheat Sheet</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+      line-height: 1.5;
+      margin: 0;
+      padding: 20px;
+    }
+
+    main {
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    h1,
+    h2,
+    h3 {
+      color: #2c3e50;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    h2 {
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+    }
+
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+    }
+
+    code {
+      background: #eee;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-family: Consolas, monospace;
+    }
+
+    pre {
+      background: #272822;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
+
+    pre code {
+      background: none;
+      padding: 0;
+      color: inherit;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 10px;
+    }
+
+    th,
+    td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f0f0f0;
+    }
+
+    .note {
+      background: #fff8dc;
+      padding: 10px;
+      border-left: 4px solid #f1c40f;
+      margin-top: 10px;
+    }
+
+    .important {
+      background: #fceaea;
+      padding: 10px;
+      border-left: 4px solid #e74c3c;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+
+<body>
+
+<h3 ><a href="../index.html">Home</a></h3>
+  <main>
+
+    <h1>⚡ JavaScript Data Types & Conditionals Cheat Sheet</h1>
+
+    <!-- DATA TYPES -->
+    <section>
+      <h2>📊 Data Types</h2>
+
+      <h3>Primitive Types</h3>
+
+      <table>
+        <tr>
+          <th>Type</th>
+          <th>Example</th>
+          <th>Description</th>
+        </tr>
+
+        <tr>
+          <td><code>string</code></td>
+          <td><code>"Hello"</code></td>
+          <td>Text</td>
+        </tr>
+
+        <tr>
+          <td><code>number</code></td>
+          <td><code>42</code>, <code>3.14</code></td>
+          <td>Integers and floating-point numbers</td>
+        </tr>
+
+        <tr>
+          <td><code>bigint</code></td>
+          <td><code>123n</code></td>
+          <td>Very large integers</td>
+        </tr>
+
+        <tr>
+          <td><code>boolean</code></td>
+          <td><code>true</code>, <code>false</code></td>
+          <td>Logical true/false value</td>
+        </tr>
+
+        <tr>
+          <td><code>undefined</code></td>
+          <td><code>undefined</code></td>
+          <td>A variable has not been assigned a value</td>
+        </tr>
+
+        <tr>
+          <td><code>null</code></td>
+          <td><code>null</code></td>
+          <td>Intentional absence of a value</td>
+        </tr>
+
+        <tr>
+          <td><code>symbol</code></td>
+          <td><code>Symbol("id")</code></td>
+          <td>Unique identifiers</td>
+        </tr>
+      </table>
+
+      <h3>Non-Primitive / Reference Types</h3>
+
+      <ul>
+        <li><code>Object</code> → <code>{ name: "Jonathan", age: 26 }</code></li>
+        <li><code>Array</code> → <code>[1, 2, 3]</code></li>
+        <li><code>Function</code> → <code>function greet() {}</code></li>
+      </ul>
+
+      <div class="note">
+        <strong>Important:</strong> Arrays and functions are technically objects in JavaScript.
+      </div>
+    </section>
+
+    <!-- TYPE CHECKING -->
+    <section>
+      <h2>🔍 Type Checking</h2>
+
+      <table>
+        <tr>
+          <th>Expression</th>
+          <th>Result</th>
+        </tr>
+
+        <tr>
+          <td><code>typeof "hello"</code></td>
+          <td><code>"string"</code></td>
+        </tr>
+
+        <tr>
+          <td><code>typeof 42</code></td>
+          <td><code>"number"</code></td>
+        </tr>
+
+        <tr>
+          <td><code>typeof true</code></td>
+          <td><code>"boolean"</code></td>
+        </tr>
+
+        <tr>
+          <td><code>typeof undefined</code></td>
+          <td><code>"undefined"</code></td>
+        </tr>
+
+        <tr>
+          <td><code>typeof null</code></td>
+          <td><code>"object"</code></td>
+        </tr>
+
+        <tr>
+          <td><code>typeof []</code></td>
+          <td><code>"object"</code></td>
+        </tr>
+
+        <tr>
+          <td><code>typeof function() {}</code></td>
+          <td><code>"function"</code></td>
+        </tr>
+
+        <tr>
+          <td><code>Array.isArray([])</code></td>
+          <td><code>true</code></td>
+        </tr>
+      </table>
+
+      <div class="note">
+        <strong>Quirk:</strong> <code>typeof null</code> returns <code>"object"</code>.
+        This is a historical JavaScript bug.
+      </div>
+    </section>
+
+    <!-- IF ELSE -->
+    <section>
+      <h2>✅ Conditionals</h2>
+
+      <h3>if / else</h3>
+
+      <pre><code>if (age >= 18) {
+  console.log("Adult");
+} else {
+  console.log("Minor");
+}</code></pre>
+
+      <h3>else if</h3>
+
+      <pre><code>if (score >= 90) {
+  console.log("A");
+} else if (score >= 80) {
+  console.log("B");
+} else {
+  console.log("C or below");
+}</code></pre>
+
+      <h3>Nested if</h3>
+
+      <pre><code>if (isLoggedIn) {
+  if (isAdmin) {
+    console.log("Welcome, Admin!");
+  }
+}</code></pre>
+    </section>
+
+    <!-- SWITCH -->
+    <section>
+      <h2>🔀 switch</h2>
+
+      <pre><code>switch (day) {
+  case "Monday":
+    console.log("Start of week");
+    break;
+
+  case "Friday":
+    console.log("Weekend soon!");
+    break;
+
+  default:
+    console.log("Midweek");
+}</code></pre>
+
+      <div class="important">
+        <strong>Remember:</strong> <code>break</code> prevents execution from
+        continuing into the next case.
+      </div>
+    </section>
+
+    <!-- LOGICAL OPERATORS -->
+    <section>
+      <h2>⚡ Logical Operators</h2>
+
+      <table>
+        <tr>
+          <th>Operator</th>
+          <th>Name</th>
+          <th>Example</th>
+        </tr>
+
+        <tr>
+          <td><code>&&</code></td>
+          <td>AND</td>
+          <td><code>true && true</code> → <code>true</code></td>
+        </tr>
+
+        <tr>
+          <td><code>||</code></td>
+          <td>OR</td>
+          <td><code>true || false</code> → <code>true</code></td>
+        </tr>
+
+        <tr>
+          <td><code>!</code></td>
+          <td>NOT</td>
+          <td><code>!true</code> → <code>false</code></td>
+        </tr>
+      </table>
+
+      <pre><code>if (isLoggedIn && isAdmin) {
+  console.log("Welcome, Admin!");
+}</code></pre>
+    </section>
+
+    <!-- COMPARISON -->
+    <section>
+      <h2>🧩 Comparison Operators</h2>
+
+      <table>
+        <tr>
+          <th>Operator</th>
+          <th>Meaning</th>
+        </tr>
+
+        <tr>
+          <td><code>==</code></td>
+          <td>Loose equality</td>
+        </tr>
+
+        <tr>
+          <td><code>===</code></td>
+          <td>Strict equality</td>
+        </tr>
+
+        <tr>
+          <td><code>!=</code></td>
+          <td>Loose inequality</td>
+        </tr>
+
+        <tr>
+          <td><code>!==</code></td>
+          <td>Strict inequality</td>
+        </tr>
+
+        <tr>
+          <td><code>&gt;</code></td>
+          <td>Greater than</td>
+        </tr>
+
+        <tr>
+          <td><code>&lt;</code></td>
+          <td>Less than</td>
+        </tr>
+
+        <tr>
+          <td><code>&gt;=</code></td>
+          <td>Greater than or equal to</td>
+        </tr>
+
+        <tr>
+          <td><code>&lt;=</code></td>
+          <td>Less than or equal to</td>
+        </tr>
+      </table>
+
+      <pre><code>console.log(5 == "5");   // true
+console.log(5 === "5");  // false
+
+console.log(10 > 5);     // true
+console.log(10 <= 10);   // true</code></pre>
+
+      <div class="note">
+        <strong>Best practice:</strong> Prefer <code>===</code> and
+        <code>!==</code> unless you specifically need type coercion.
+      </div>
+    </section>
+
+    <!-- TERNARY -->
+    <section>
+      <h2>🎯 Ternary Operator</h2>
+
+      <p>Short form of a simple <code>if / else</code>.</p>
+
+      <pre><code>let status = age >= 18 ? "Adult" : "Minor";</code></pre>
+
+      <p>Equivalent to:</p>
+
+      <pre><code>let status;
+
+if (age >= 18) {
+  status = "Adult";
+} else {
+  status = "Minor";
+}</code></pre>
+    </section>
+
+    <!-- TRUTHY FALSY -->
+    <section>
+      <h2>🌀 Truthy & Falsy</h2>
+
+      <h3>Falsy Values</h3>
+
+      <p>
+        <code>false</code>,
+        <code>0</code>,
+        <code>-0</code>,
+        <code>0n</code>,
+        <code>""</code>,
+        <code>null</code>,
+        <code>undefined</code>,
+        <code>NaN</code>
+      </p>
+
+      <p>Everything else is truthy.</p>
+
+      <pre><code>if ("hello") {
+  console.log("This runs!");
+}
+
+if ([]) {
+  console.log("Arrays are truthy!");
+}
+
+if ({}) {
+  console.log("Objects are truthy!");
+}</code></pre>
+    </section>
+
+    <!-- NULLISH -->
+    <section>
+      <h2>❓ Nullish Coalescing</h2>
+
+      <p>
+        <code>??</code> uses the right-hand value only when the left-hand
+        value is <code>null</code> or <code>undefined</code>.
+      </p>
+
+      <pre><code>let username = userName ?? "Guest";</code></pre>
+
+      <p>Unlike <code>||</code>, it does not treat <code>0</code> or
+        <code>""</code> as missing.</p>
+
+      <pre><code>let count = 0;
+
+console.log(count || 10); // 10
+console.log(count ?? 10); // 0</code></pre>
+    </section>
+
+    <!-- OPTIONAL CHAINING -->
+    <section>
+      <h2>🔗 Optional Chaining</h2>
+
+      <p>
+        <code>?.</code> safely accesses a property that might not exist.
+      </p>
+
+      <pre><code>console.log(user?.address?.city);</code></pre>
+
+      <p>
+        If <code>user</code> or <code>address</code> is
+        <code>null</code> or <code>undefined</code>, the result is
+        <code>undefined</code> instead of an error.
+      </p>
+    </section>
+
+    <!-- LOGICAL ASSIGNMENT -->
+    <section>
+      <h2>📝 Logical Assignment</h2>
+
+      <table>
+        <tr>
+          <th>Operator</th>
+          <th>Meaning</th>
+        </tr>
+
+        <tr>
+          <td><code>||=</code></td>
+          <td>Assign if value is falsy</td>
+        </tr>
+
+        <tr>
+          <td><code>&&=</code></td>
+          <td>Assign if value is truthy</td>
+        </tr>
+
+        <tr>
+          <td><code>??=</code></td>
+          <td>Assign if value is nullish</td>
+        </tr>
+      </table>
+
+      <pre><code>let username = "";
+
+username ||= "Guest";
+
+console.log(username); // "Guest"</code></pre>
+    </section>
+
+  </main>
+
+</body>
+</html>]
